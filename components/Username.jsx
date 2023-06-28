@@ -1,7 +1,10 @@
 // import axios from "axios";
 import React, { useEffect } from "react";
-import { View, Text } from "react-native";
+import { View } from "react-native";
 import useSWR from "swr";
+import { FONTS } from "../constants/fonts";
+import { PaperProvider } from "react-native-paper";
+import { Text } from "react-native-paper";
 
 function Username() {
   const fetcher = (url) => fetch(url).then((res) => res.json());
@@ -15,7 +18,7 @@ function Username() {
     console.log("ERROR", JSON.stringify(error));
     return (
       <View>
-        <Text>Error fetching username</Text>
+        <Text variant="displayLarge">Error fetching username</Text>
       </View>
     );
   }
@@ -26,10 +29,18 @@ function Username() {
       </View>
     );
   return (
-    <View>
-      <Text>Username: {data.description} </Text>
-    </View>
+    <PaperProvider>
+      <View>
+        <Text variant="titleMedium"> Username: {data.description} </Text>
+      </View>
+    </PaperProvider>
   );
 }
+
+// const heading1: {
+//      fontSize: 24,
+//      fontWeight: 'bold',
+//      color: 'black',
+// }
 
 export default Username;
