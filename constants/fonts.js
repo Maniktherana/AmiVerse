@@ -1,5 +1,7 @@
 import { StyleSheet } from "react-native";
 
+//these are styles that can be used throughout the app so no need to write styles for every component
+
 const FONTS = StyleSheet.create({
   text: {
     fontSize: 24,
