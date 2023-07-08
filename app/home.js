@@ -8,23 +8,25 @@ import { Link } from "expo-router";
 
 const Home = () => {
   return (
-    <SafeAreaView>
-      <Stack.Screen
-        options={{
-          headerStyle: {
-            backgroundColor: COLORS.primary_dark,
-          },
-          headerShadowVisible: false,
-          headerTitle: "Amiverse",
-        }}
-      />
+    <>
+      <SafeAreaView>
+        <Stack.Screen
+          options={{
+            headerStyle: {
+              backgroundColor: COLORS.primary_dark,
+            },
+            headerShadowVisible: false,
+            headerTitle: "Amiverse",
+          }}
+        />
+      </SafeAreaView>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
           <Username></Username>
-          <Link href="/settings">Settings</Link>
+          {/* <Link href="/settings">Settings</Link> */}
         </View>
       </ScrollView>
-    </SafeAreaView>
+    </>
   );
 };
 
