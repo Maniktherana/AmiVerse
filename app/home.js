@@ -1,6 +1,6 @@
 import { View, Text, SafeAreaView } from "react-native";
 import { Stack, useRouter } from "expo-router";
-import { COLORS } from "../constants/styles";
+import { COLORS } from "../constants/colors";
 import { ScrollView } from "react-native-gesture-handler";
 import Username from "../components/Username";
 import Todaytimetable from "../components/timetable";
