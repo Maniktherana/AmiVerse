@@ -1,0 +1,20 @@
+[tool.poetry]
+name = "server"
+version = "0.1.0"
+description = "AmiVerse Backend"
+authors = ["Manik Rana <manikrana54@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+grpcio = "^1.54.0"
+protobuf = "3.20.0"
+google-api-python-client = "^2.86.0"
+grpc-gateway-protoc-gen-openapiv2 = "^0.1.0"
+fastapi = "^0.100.0"
+uvicorn = {extras = ["standard"], version = "^0.22.0"}
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
