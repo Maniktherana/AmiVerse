@@ -1,33 +1,35 @@
-# AmiVerse Backend
+# AmiVerse
 
-## Installing dependencies
+An iOS and Android client for Amizone
 
-1. Install Python dependencies:
+## Environment Setup
 
-    ```shell
-    poetry install
-    ```
+Clone the repo and run `npm i` to install the dependencies.
 
-## Generating Protobuf
+## Running the app
 
-If you make any changes to the `amizone.proto` file, you'll need to regenerate the corresponding Python code. You can do this by running the following command:
+Since the API is currently using a proxy server which is locally hosted, we have to use `ngrok` to expose the server to the internet.
 
-```shell
-make gen
+Sign up and make an account on [ngrok](https://ngrok.com/) to get your auth token. Follow their guide to install it on your machine and add the auth token to the config.
+
+Once that is done, start the proxy server and then run `ngrok http 3000` in another terminal (proxy server is hosted on 3000)
+
+Add your username, password and the ngrok url in the `functions.js` file. We are hardcoding the credentials for now.
+
+> Make sure to remove the credentials before pushing to the repo.
+
+Run `npm start` to start the [expo](https://expo.dev/) server. Expo will generate a QR code which can be scanned using the Expo app on your phone to run the app. The app will only run on one device at a time.
+
+<!-- ## 🚀 How to use
+
+```sh
+npx create-expo-app -e with-router
 ```
 
-## Run the server in dev mode
+## 📝 Notes
 
-If you want to automatically restart the server whenever you make changes to the code, you can use watch mode. Run the following command:
+- [Expo Router: Docs](https://expo.github.io/router)
+- [Expo Router: Repo](https://github.com/expo/router)
 
-```shell
-make dev
-```
-
-## Good to knows
-
-The server runs on port 8000 by default. username and password must be passed as query parameters for each request. For example:
-
-```shell
-localhost:8000?username=<username>&password=<password>
-```
+for ios native (additional install)
+`npx pod-install` -->
