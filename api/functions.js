@@ -1,8 +1,8 @@
 import axios from "axios";
 
-let username = ""; // enter your amizone username
-let password = ""; // enter your amizone password
-let ngrokURL = ""; // enter your ngrok url (remove the last slash)
+let username = "9109986"; // enter your amizone username
+let password = "8269dc"; // enter your amizone password
+let ngrokURL = "http://localhost:3000"; // enter your ngrok url (remove the last slash)
 
 // fetching the student's profile
 export async function getStudentProfile() {
@@ -37,9 +37,9 @@ export async function getStudentTimetable() {
       : new Date().getMonth() + 1; // if month is single digit add 0 before it
   let day = new Date().getDate();
 
-  let baseUrl = `${ngrokURL}/api/v1/class_schedule/${year}/${parseInt(
-    month
-  )}/${day}`;
+  let baseUrl = `${ngrokURL}/api/v1/class_schedule/${year}/${parseInt(month)}/${
+    day - 1
+  }`;
   let response = await axios.post(
     baseUrl,
     {},

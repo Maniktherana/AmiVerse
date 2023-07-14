@@ -6,6 +6,7 @@
     "web": "expo start --web"
   },
   "dependencies": {
+    "@react-navigation/native": "^6.1.7",
     "axios": "^1.4.0",
     "base-64": "^1.0.0",
     "cors": "^2.8.5",
