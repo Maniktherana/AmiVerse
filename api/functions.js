@@ -2,7 +2,8 @@ import axios from "axios";
 
 let username = "9109986"; // enter your amizone username
 let password = "8269dc"; // enter your amizone password
-let ngrokURL = "http://localhost:3000"; // enter your ngrok url (remove the last slash)
+let ngrokURL =
+  " https://78bc-2401-4900-1c8a-dd90-a82e-fa77-93-e4c1.ngrok-free.app"; // enter your ngrok url (remove the last slash)
 
 // fetching the student's profile
 export async function getStudentProfile() {

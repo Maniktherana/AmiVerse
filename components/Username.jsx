@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
 import { getStudentProfile } from "../api/functions";
+import { styles } from "../styles/username";
 
 function Username() {
   const [userid, setUserid] = useState({});
@@ -12,7 +13,7 @@ function Username() {
   return (
     <>
       <View>
-        <Text>Hello {userid.name}</Text>
+        <Text style={styles.hello}>Hello, {userid.name}</Text>
       </View>
     </>
   );
