@@ -7,8 +7,6 @@ export const styles = {
     borderRadius: 8,
     padding: 10,
     marginHorizontal: 2,
-    // justifyContent: "center",
-    // alignItems: "center",
     marginVertical: 5,
   },
   courseCode: {
@@ -47,5 +45,15 @@ export const styles = {
     fontWeight: "bold",
     textAlign: "center",
     marginTop: 20,
+  },
+  expandedClassContainer: {
+    flex: 5,
+    width: 370,
+    height: 120,
+    backgroundColor: "teal",
+    borderRadius: 8,
+    padding: 10,
+    marginHorizontal: 2,
+    marginVertical: 5,
   },
 };
