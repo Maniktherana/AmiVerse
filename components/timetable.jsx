@@ -1,43 +1,43 @@
-import { getStudentTimetable } from "../controllers/functions";
+import { getStudentTimetable } from "../api/functions";
 import React, { useEffect, useState } from "react";
-import { View, Text } from "react-native";
-import { styles } from "../styles/Timetable";
-import { atob, btoa } from "base-64";
+import { View, Text, Button } from "react-native";
+import ScheduleCard from "./ScheduleCard";
+import axios from "axios";
 
 const Todaytimetable = () => {
-  const [data, setData] = useState({});
+  const [data, setData] = useState();
+  let username = ""; // enter your amizone username
+  let password = ""; // enter your amizone password
+  let ngrokURL =
+    "https://6178-2401-4900-1c8a-c946-58f-1c0e-28b1-2708.ngrok-free.app";
 
   useEffect(() => {
-    const fetchTimetable = async () => {
-      try {
-        const timetableData = await getStudentTimetable();
-        setData(timetableData);
-        console.log(timetableData);
-      } catch (error) {
-        console.log("Error fetching timetable:", error);
-      }
-    };
-
-    fetchTimetable();
+    (async () => {
+      await axios
+        .get(
+          `${ngrokURL}/classSchedule?username=${username}&password=${password}`
+        )
+        .then((res) => {
+          setData(res.data.classes);
+          console.log("ressponse is ");
+          console.log(res.data.classes);
+        })
+        .catch((error) => {
+          console.error("Error fetching student timetable:", error);
+          throw error;
+        });
+    })();
   }, []);
-
+  //
   return (
     <View>
-      {data.classes && data.classes.length > 0 ? (
-        data.classes.map((classData, index) => (
-          <View style={styles.classContainer} key={index}>
-            <Text style={styles.courseCode}>{classData.course.code}</Text>
-            <Text style={styles.courseName}>{classData.course.name}</Text>
-            <Text style={styles.time}>
-              {classData.startTime} - {classData.endTime}
-            </Text>
-            <Text style={styles.faculty}>{classData.faculty}</Text>
-            <Text style={styles.room}>{classData.room}</Text>
-            <Text style={styles.attendance}>{classData.attendance}</Text>
-          </View>
+      <Text>Your schedule for today:</Text>
+      {data ? (
+        data.map((classData, index) => (
+          <ScheduleCard key={index} data={classData} />
         ))
       ) : (
-        <Text>No classes found</Text>
+        <Text>No classes found for Today! </Text>
       )}
     </View>
   );

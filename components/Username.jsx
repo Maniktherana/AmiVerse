@@ -1,29 +1,26 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { getStudentProfile } from "../controllers/functions";
+import { getStudentProfile } from "../api/functions";
+import { styles } from "../styles/username";
+import { SafeAreaView } from "react-native-safe-area-context";
 
 function Username() {
   const [userid, setUserid] = useState({});
- 
 
   useEffect(() => {
-    getStudentProfile().then((data) => setUserid(data));
+    async function profiler() {
+      await getStudentProfile().then((data) => setUserid(data.data));
+    }
+    profiler();
   }, []);
-
 
   return (
     <>
-    <View>
-      <Text>Hello {userid.name}</Text>
-    </View>
+      <SafeAreaView>
+        <Text style={styles.hello}>Hello, {userid.name}</Text>
+      </SafeAreaView>
     </>
   );
 }
-
-// const heading1: {
-//      fontSize: 24,
-//      fontWeight: 'bold',
-//      color: 'black',
-// }
 
 export default Username;
