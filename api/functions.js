@@ -11,7 +11,7 @@ export async function getStudentTimetable() {
     );
     return response.data;
   } catch (error) {
-    console.error("Error fetching student timetable:", error);
+    // console.error("Error fetching student timetable:", error);
     throw error;
   }
 }
@@ -23,6 +23,6 @@ export async function getStudentProfile() {
     // console.log("Get student profile: ", data);
     return data;
   } catch (err) {
-    console.log("error at getStudentProfile", err);
+    // console.log("error at getStudentProfile", err);
   }
 }

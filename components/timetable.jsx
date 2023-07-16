@@ -18,11 +18,11 @@ const Todaytimetable = () => {
         )
         .then((res) => {
           setData(res.data.classes);
-          console.log("ressponse is ");
-          console.log(res.data.classes);
+          // console.log("ressponse is ");
+          // console.log(res.data.classes);
         })
         .catch((error) => {
-          console.error("Error fetching student timetable:", error);
+          // console.error("Error fetching student timetable:", error);
           throw error;
         });
     })();

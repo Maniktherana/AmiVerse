@@ -13,10 +13,10 @@ const LoginScreen = () => {
     try {
       await SecureStore.setItemAsync("username", username);
       await SecureStore.setItemAsync("password", password);
-      console.log("Username and password saved securely.");
+      //  console.log("Username and password saved securely.");
       setIsloggedin(true);
     } catch (error) {
-      console.error("Error saving username and password:", error);
+      //  console.error("Error saving username and password:", error);
     }
   };
 
