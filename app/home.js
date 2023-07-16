@@ -1,9 +1,10 @@
-import { View, Text, SafeAreaView } from "react-native";
+import { View } from "react-native";
 import { ScrollView } from "react-native-gesture-handler";
 import Username from "../components/Username";
 import Todaytimetable from "../components/timetable";
 import { useNavigation } from "@react-navigation/native";
 import { useLayoutEffect } from "react";
+
 const Home = () => {
   const navigation = useNavigation();
 
@@ -17,8 +18,8 @@ const Home = () => {
     <>
       <ScrollView showsVerticalScrollIndicator={false}>
         <View>
-          <Username></Username>
-          <Todaytimetable></Todaytimetable>
+          <Username />
+          <Todaytimetable />
         </View>
       </ScrollView>
     </>
