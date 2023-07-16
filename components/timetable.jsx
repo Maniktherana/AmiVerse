@@ -8,8 +8,7 @@ const Todaytimetable = () => {
   const [data, setData] = useState();
   let username = ""; // enter your amizone username
   let password = ""; // enter your amizone password
-  let ngrokURL =
-    "https://6178-2401-4900-1c8a-c946-58f-1c0e-28b1-2708.ngrok-free.app";
+  let ngrokURL = "";
 
   useEffect(() => {
     (async () => {
