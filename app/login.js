@@ -21,7 +21,7 @@ const LoginScreen = () => {
   };
 
   return loggedin ? (
-    <Redirect href="/Home" />
+    <Redirect href="/home" />
   ) : (
     <View style={styles.container}>
       <TextInput

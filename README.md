@@ -20,6 +20,13 @@ Add your username, password and the ngrok url in the `functions.js` file. We are
 
 Run `npm start` to start the [expo](https://expo.dev/) server. Expo will generate a QR code which can be scanned using the Expo app on your phone to run the app. The app will only run on one device at a time.
 
+## Changelog (@Bhavya)
+
+- Added a new page for showcasing all courses
+- Added bottom navigation bar with material ui icons
+- extracted ngrok url to a separate file (constants/config.js)
+- Added progress bar for attendance
+
 <!-- ## 🚀 How to use
 
 ```sh

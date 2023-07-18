@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from "react";
 import { View, Text } from "react-native";
-import { getStudentProfile } from "../api/functions";
+import axios from "axios";
 import { styles } from "../styles/username";
 import { SafeAreaView } from "react-native-safe-area-context";
 import * as SecureStore from "expo-secure-store";
+import { ngrokURL } from "../constants/config";
 
 function Username() {
-  const [userid, setUserid] = useState({});
-  const [username, setUsername] = useState("");
-  const [password, setPassword] = useState("");
+  const [userProfile, setUserProfile] = useState({});
+  const [secUsername, setUsername] = useState("");
+  const [secPassword, setPassword] = useState("");
 
   // read data from local encrypted storage
   const retrieveData = async () => {
@@ -19,26 +20,50 @@ function Username() {
       if (storedUsername && storedPassword) {
         setUsername(storedUsername);
         setPassword(storedPassword);
+
+        // console.log("stored username is ", storedUsername);
       }
     } catch (error) {
       console.error("Error retrieving data from SecureStore:", error);
     }
   };
-  // retreieve data from local storage then fetch profile
+
   useEffect(() => {
-    async function profiler() {
-      await retrieveData();
-      await getStudentProfile().then((data) => setUserid(data.data));
+    retrieveData();
+
+    async function getUserProfile() {
+      await axios
+        .get(
+          `${ngrokURL}/userProfile?username=${secUsername}&password=${secPassword}`
+        )
+        .then((res) => {
+          setUserProfile(res.data);
+        })
+        .catch((error) => {
+          console.log(error.response.data);
+        });
     }
-    profiler();
-  }, []);
+
+    // only make the api call when both te credentials are available
+    secPassword && secUsername && getUserProfile();
+  }, [secUsername, secPassword]);
 
   return (
     <>
       <SafeAreaView>
-        <Text style={styles.hello}>Hello, {userid.name}</Text>
-        <Text>Entered username: {username ? username : "notentered"}</Text>
-        <Text>Entered password: {password ? password : "notentered"}</Text>
+        {userProfile && (
+          <Text style={styles.hello}>
+            Hello, {userProfile.name ? userProfile.name : "No Name"}
+          </Text>
+        )}
+
+        {/* I removed the following because we obviously don't want to show any cred on the frontend */}
+        {/* <Text>
+          Entered username: {secUsername ? secUsername : "notentered"}
+        </Text>
+        <Text>
+          Entered password: {secPassword ? secPassword : "notentered"}
+        </Text> */}
       </SafeAreaView>
     </>
   );
