@@ -3,7 +3,7 @@ import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "../styles/Timetable";
 
 const ScheduleCard = (data) => {
-  const [isExpanded, setIsExpanded] = useState(false);
+  const [isExpanded, setIsExpanded] = useState(true);
 
   const toggleExpansion = () => {
     setIsExpanded((prev) => !prev);
