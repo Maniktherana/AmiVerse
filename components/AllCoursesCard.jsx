@@ -4,16 +4,6 @@ import { styles } from "../styles/AllCourses";
 import ProgressBar from "react-native-progress/Bar";
 
 const AllCoursesCard = (props) => {
-  //   const [isExpanded, setIsExpanded] = useState(false);
-
-  //   const toggleExpansion = () => {
-  //     setIsExpanded((prev) => !prev);
-  //   };
-
-  // if (!course || !course.ref) {
-  //   return <Text>No course data available</Text>;
-  // }
-
   const [attendance, setAttendance] = useState(0);
 
   // Calculate attendance once after the initial render or when attendance data changes

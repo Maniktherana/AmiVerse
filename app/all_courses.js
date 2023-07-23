@@ -1,4 +1,4 @@
-import { View, Text } from "react-native";
+import { View, Text, SafeAreaView } from "react-native";
 import { useState, useEffect } from "react";
 import { ScrollView } from "react-native-gesture-handler";
 import * as SecureStore from "expo-secure-store";
@@ -12,7 +12,6 @@ const Courses = () => {
   const [secUsername, setUsername] = useState("");
   const [secPassword, setPassword] = useState("");
   const [data, setData] = useState([]);
-  // const [semesters, setSemesters] = useState([]);
   const [currentSemester, setCurrentSemester] = useState("");
 
   // read data from local encrypted storage
@@ -25,7 +24,7 @@ const Courses = () => {
         setUsername(storedUsername);
         setPassword(storedPassword);
 
-        // console.log("stored username is ", storedUsername);
+        console.log("stored username is ", storedUsername);
       }
     } catch (error) {
       console.error("Error retrieving data from SecureStore:", error);
@@ -37,19 +36,18 @@ const Courses = () => {
       `${ngrokURL}/semesters?username=${secUsername}&password=${secPassword}`
     );
     // setSemesters(res.data.semesters);
-    // console.log("current sem is:", semesters[0].name);
+    console.log("current sem is:", semesters[0].name);
     return res.data.semesters[0].name;
     // console.log(res.data.semesters[0].ref);
-    // console.log("current sem is:", semesters[0].name);
   }
 
   async function getAllCourses() {
     const res = await axios.get(
       `${ngrokURL}/courses?username=${secUsername}&password=${secPassword}&semester=${currentSemester}`
     );
-    // res.data.courses.map((course) =>
-    //   console.log(course.ref.name, course.ref.code)
-    // );
+    res.data.courses.map((course) =>
+      console.log(course.ref.name, course.ref.code)
+    );
     return res.data.courses;
   }
 
@@ -68,20 +66,18 @@ const Courses = () => {
   }, [secPassword, secUsername, currentSemester]);
 
   return (
-    <ScrollView showsVerticalScrollIndicator={false}>
-      <View>
-        <Text style={styles.hello}>All courses page!</Text>
-        <View>
-          {data ? (
-            data.map((course, index) => (
-              <AllCoursesCard key={index} course={course} />
-            ))
-          ) : (
-            <Text>No courses </Text>
-          )}
-        </View>
-      </View>
-    </ScrollView>
+    <SafeAreaView>
+      <Text style={styles.hello}>All courses page!</Text>
+      <ScrollView>
+        {data ? (
+          data.map((course, index) => (
+            <AllCoursesCard key={index} course={course} />
+          ))
+        ) : (
+          <Text>No courses </Text>
+        )}
+      </ScrollView>
+    </SafeAreaView>
   );
 };
 
