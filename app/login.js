@@ -12,15 +12,13 @@ const LoginScreen = () => {
   const [password, setPassword] = useState("");
   const [loggedin, setIsloggedin] = useState(false);
   const [respnotok, setRespnotok] = useState(false);
+  const [userData, setUserData] = useState("");
 
   const EncryptandStore = async () => {
     try {
       await SecureStore.setItemAsync("username", username);
       await SecureStore.setItemAsync("password", password);
-      await VerifyCredentials(
-        (username = { username }),
-        (password = { password })
-      );
+      // await SecureStore.setItemAsync("user_data", JSON.stringify(userData));
     } catch (error) {}
   };
 
@@ -46,8 +44,8 @@ const LoginScreen = () => {
           if (response.ok) {
             // they are correct
             const data = await response.json();
-            console.log("data jo aya hai", data);
-            await storeData(data); // stoaring username data
+            console.log("data", data);
+            setUserData(data);
             EncryptandStore(); // save to secure store
             setIsloggedin(true); // redirect to home page
           } else {

@@ -23,8 +23,6 @@ const Courses = () => {
       if (storedUsername && storedPassword) {
         setUsername(storedUsername);
         setPassword(storedPassword);
-
-        console.log("stored username is ", storedUsername);
       }
     } catch (error) {
       console.error("Error retrieving data from SecureStore:", error);

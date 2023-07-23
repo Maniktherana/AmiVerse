@@ -9,34 +9,12 @@ import AsyncStorage from "@react-native-async-storage/async-storage";
 
 function Username() {
   const [userProfile, setUserProfile] = useState({});
-  // const [username, setUsername] = useState("");
-  // const [password, setPassword] = useState("");
-
-  // useEffect(() => {
-  //   const retrieveData = async () => {
-  //     try {
-  //       const StoredUserInformation = await SecureStore.getItemAsync(
-  //         "User_info"
-  //       );
-  //       // const storedPassword = await SecureStore.getItemAsync('password');
-
-  //       if (StoredUserInformation) {
-  //         setUserProfile(StoredUserInformation);
-  //       }
-  //     } catch (error) {
-  //       console.error("Error retrieving data from SecureStore:", error);
-  //     }
-  //   };
-  //   retrieveData();
-  // }, []);
 
   useEffect(() => {
     const getUsernameDataFromCache = async () => {
       try {
         const jsonValue = await AsyncStorage.getItem("UsernameData");
-        console.log("cache se mila", jsonValue);
         //  return jsonValue != null ? JSON.parse(jsonValue) :  null;
-        console.log("NAME", userProfile.name);
         setUserProfile(JSON.parse(jsonValue));
       } catch (e) {
         // error reading value
@@ -45,18 +23,6 @@ function Username() {
     getUsernameDataFromCache();
   }, []);
 
-  const retrieveData = async () => {
-    try {
-      const StoredUserInformation = await SecureStore.getItemAsync("user_info");
-      // const storedPassword = await SecureStore.getItemAsync('password');
-
-      if (StoredUserInformation) {
-        setUserProfile(StoredUserInformation);
-      }
-    } catch (error) {
-      console.error("Error retrieving data from SecureStore:", error);
-    }
-  };
   return (
     <>
       <SafeAreaView>
