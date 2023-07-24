@@ -29,19 +29,19 @@ const Courses = () => {
     }
   };
 
-  async function getCurrentSemester() {
-    const res = await axios.get(
-      `${ngrokURL}/semesters?username=${secUsername}&password=${secPassword}`
-    );
-    // setSemesters(res.data.semesters);
-    console.log("current sem is:", semesters[0].name);
-    return res.data.semesters[0].name;
-    // console.log(res.data.semesters[0].ref);
-  }
+  // async function getCurrentSemester() {
+  //   const res = await axios.get(
+  //     `${ngrokURL}/semesters?username=${secUsername}&password=${secPassword}`
+  //   );
+  //   // setSemesters(res.data.semesters);
+  //   console.log("current sem is:", semesters[0].name);
+  //   return res.data.semesters[0].name;
+  //   // console.log(res.data.semesters[0].ref);
+  // }
 
   async function getAllCourses() {
     const res = await axios.get(
-      `${ngrokURL}/courses?username=${secUsername}&password=${secPassword}&semester=${currentSemester}`
+      `${ngrokURL}/currentCourses?username=${secUsername}&password=${secPassword}&semester=${currentSemester}`
     );
     res.data.courses.map((course) =>
       console.log(course.ref.name, course.ref.code)
@@ -51,11 +51,6 @@ const Courses = () => {
 
   useEffect(() => {
     retrieveData().then(() => {
-      getCurrentSemester().then((s) => {
-        console.log(s);
-        setCurrentSemester(s);
-      });
-
       getAllCourses().then((courses) => {
         setData(courses);
         console.log("courses:", courses); // Move the logging here
