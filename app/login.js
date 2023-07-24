@@ -41,6 +41,7 @@ const LoginScreen = () => {
             // fetch username to check that the credentials are correct
             `${ngrokURL}/userProfile?username=${username}&password=${password}`
           );
+          // console.log(response);
           if (response.ok) {
             // they are correct
             const data = await response.json();
