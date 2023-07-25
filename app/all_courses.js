@@ -41,7 +41,7 @@ const Courses = () => {
 
   async function getAllCourses() {
     const res = await axios.get(
-      `${ngrokURL}/currentCourses?username=${secUsername}&password=${secPassword}&semester=${currentSemester}`
+      `${ngrokURL}/currentCourses?username=${secUsername}&password=${secPassword}`
     );
     res.data.courses.map((course) =>
       console.log(course.ref.name, course.ref.code)
