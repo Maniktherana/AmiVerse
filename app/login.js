@@ -47,9 +47,11 @@ const LoginScreen = () => {
             const data = await response.json();
             console.log("data", data);
             setUserData(data);
+
             EncryptandStore(); // save to secure store
             setIsloggedin(true); // redirect to home page
           } else {
+            alert("Incorrect Username or Password");
             console.log("Response not OK");
             setRespnotok(true);
           }
@@ -63,12 +65,6 @@ const LoginScreen = () => {
       console.log(error);
     }
   };
-
-  // respnotok
-  //   ? alert("Incorrect Username or Password")
-  //   : (onPress = () => {
-  //       setRespnotok(false);
-  //     });
 
   return loggedin ? (
     <Redirect href="/homepage" />
