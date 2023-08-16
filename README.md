@@ -17,8 +17,13 @@ Clone the repo and run `npm i` to install the dependencies.
 
 ## Running the app
 
-Since the API is currently using a proxy server which is locally hosted, we have to use `ngrok` to expose the server to the internet.
+### Install the Backend
 
+AmiVerse makes use of the [AmiVerse backend](https://github.com/Maniktherana/amiverse-backend) to interface with go-amizone. Follow the steps and setup the backend.
+
+#### Setup ngrok
+
+In oredr to connect our backend to the local version of the app, we have to use `ngrok` to expose the server to the internet.
 Sign up and make an account on [ngrok](https://ngrok.com/) to get your auth token. Follow their guide to install it on your machine and add the auth token to the config.
 
 Once that is done, start the proxy server and then run `ngrok http 3000` in another terminal (proxy server is hosted on 3000)
