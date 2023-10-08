@@ -23,7 +23,7 @@ const AllCoursesCard = (props) => {
 
   return (
     <TouchableOpacity>
-      <View style={styles.container}>
+       <View style={[styles.container, { backgroundColor: props.backgroundColor }]}>
         <View style={styles.classContainer}>
           <Text style={styles.courseCode}>{props.course.ref.code}</Text>
           <Text style={styles.courseName}>{props.course.ref.name}</Text>

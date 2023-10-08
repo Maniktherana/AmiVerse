@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button, Image } from "react-native";
+import { TouchableOpacity, } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { useRouter, Redirect, useNavigation } from "expo-router";
 import { styles } from "../styles/Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ngrokURL } from "../constants/config";
+
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -70,18 +72,38 @@ const LoginScreen = () => {
     <Redirect href="/homepage" />
   ) : (
     <View style={styles.container}>
+
+      
+      <Image
+        source={require("../assets/Picture1.png")} // Specify the relative path to your image
+        style={styles.logo} // Apply a style to the image if needed
+      />
+        
+      <Text style={styles.title}>Login</Text>
+      
       <TextInput
-        style={styles.input}
-        placeholder="Username"
+        style={[styles.input, styles.usernameInput]}
+        placeholder="User Name"
+        placeholderTextColor="white"
         onChangeText={(text) => setUsername(text)}
       />
       <TextInput
-        style={styles.input}
+        style={[styles.input, styles.usernameInput]}
         placeholder="Password"
+        placeholderTextColor="white"
         onChangeText={(text) => setPassword(text)}
         secureTextEntry={true}
       />
-      <Button title="Login" onPress={VerifyCredentials} />
+      
+      <TouchableOpacity
+      style={[styles.loginButton, { backgroundColor: 'red' }]} // Apply custom button styles here
+      onPress={VerifyCredentials}
+      >
+      <Text style={styles.buttonText}>Login</Text>
+      </TouchableOpacity>
+
+      
+
     </View>
   );
 };
