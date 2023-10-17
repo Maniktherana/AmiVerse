@@ -96,7 +96,7 @@ const LoginScreen = () => {
       />
       
       <TouchableOpacity
-      style={[styles.loginButton, { backgroundColor: 'red' }]} // Apply custom button styles here
+      style={styles.loginButton} 
       onPress={VerifyCredentials}
       >
       <Text style={styles.buttonText}>Login</Text>

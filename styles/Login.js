@@ -36,7 +36,7 @@ export const styles = {
   },
 
   loginButton: {
-    backgroundColor: 'red', 
+    backgroundColor: 'blue', 
     padding: 10,
     borderRadius: 5,
     borderWidth: 1,

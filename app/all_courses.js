@@ -8,7 +8,6 @@ import AllCoursesCard from "../components/AllCoursesCard";
 import axios from "axios";
 import { ngrokURL } from "../constants/config";
 
-
 const Courses = () => {
   const [secUsername, setUsername] = useState("");
   const [secPassword, setPassword] = useState("");
@@ -59,24 +58,13 @@ const Courses = () => {
     });
   }, [secPassword, secUsername, currentSemester]);
 
-  const [currentColorIndex, setCurrentColorIndex] = useState(0);
-
-  const getNextColor = () => {
-    const color = courseColors[currentColorIndex];
-    setCurrentColorIndex((currentColorIndex + 1) % courseColors.length);
-    return color;
-  };
-
   return (
     <SafeAreaView>
       <Text style={styles.hello}>All courses page!</Text>
       <ScrollView>
         {data ? (
           data.map((course, index) => (
-            <AllCoursesCard 
-              key={index} 
-              course={course}
-              backgroundColor={getNextColor()} />
+            <AllCoursesCard key={index} course={course} />
           ))
         ) : (
           <Text>No courses </Text>
