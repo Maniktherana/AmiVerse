@@ -10,6 +10,8 @@ export const styles = {
   logo: {
     width: 100, 
     height: 200, 
+    position: "absolute",
+    top: 50,
   },
 
   title: {
@@ -18,6 +20,7 @@ export const styles = {
     fontWeight: "bold",
     marginBottom: 20, 
     textAlign: "left",
+    //position: "absolute",
   },
 
   input: {
@@ -29,6 +32,8 @@ export const styles = {
     padding: 25,
     borderRadius: 20,
     backgroundColor:"#424045",
+    //position: "absolute",
+    //gap: 10,
   },
 
   usernameInput: {
@@ -46,6 +51,7 @@ export const styles = {
     marginBottom: 10,
     padding: 25,
     borderRadius: 20,
+   
     
   },
   buttonText: {
@@ -53,4 +59,6 @@ export const styles = {
     fontSize: 16,
     textAlign: 'center',
   },
+
+
 };

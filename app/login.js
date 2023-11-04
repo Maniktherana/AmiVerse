@@ -21,7 +21,7 @@ const LoginScreen = () => {
       await SecureStore.setItemAsync("username", username);
       await SecureStore.setItemAsync("password", password);
       // await SecureStore.setItemAsync("user_data", JSON.stringify(userData));
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const storeData = async (value) => {
@@ -71,40 +71,39 @@ const LoginScreen = () => {
   return loggedin ? (
     <Redirect href="/homepage" />
   ) : (
-    <View style={styles.container}>
+    <View style= {styles.container}>
 
-      
       <Image
         source={require("../assets/Picture1.png")} // Specify the relative path to your image
         style={styles.logo} // Apply a style to the image if needed
       />
-        
+
       <Text style={styles.title}>Login</Text>
-      
-      <TextInput
-        style={[styles.input, styles.usernameInput]}
-        placeholder="User Name"
-        placeholderTextColor="white"
-        onChangeText={(text) => setUsername(text)}
-      />
-      <TextInput
-        style={[styles.input, styles.usernameInput]}
-        placeholder="Password"
-        placeholderTextColor="white"
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry={true}
-      />
-      
-      <TouchableOpacity
-      style={styles.loginButton} 
-      onPress={VerifyCredentials}
-      >
-      <Text style={styles.buttonText}>Login</Text>
-      </TouchableOpacity>
+    
 
-      
+        <TextInput
+          style={[styles.input, styles.usernameInput]}
+          placeholder="User Name"
+          placeholderTextColor="white"
+          onChangeText={(text) => setUsername(text)}
+        />
+        <TextInput
+          style={[styles.input, styles.usernameInput]}
+          placeholder="Password"
+          placeholderTextColor="white"
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={true}
+        />
 
-    </View>
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={VerifyCredentials}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+
+      </View>
+
   );
 };
 
