@@ -1,4 +1,4 @@
 export const styles = {
-  hello: { color: "black", fontSize: 30, fontWeight: "bold" },
+  usernameContainer: { color: "black", fontSize: 30, fontWeight: "bold",paddingLeft: 20, paddingTop: 10},
   username: { color: "black", fontSize: 20, fontWeight: "bold" },
 };

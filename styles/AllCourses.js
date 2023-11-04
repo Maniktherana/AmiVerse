@@ -1,35 +1,44 @@
 import { StyleSheet } from "react-native";
 
+
 export const styles = StyleSheet.create({
   container: {
     flex: 1,
+    backgroundColor: "#0B0B0B",
     marginHorizontal: 6,
     padding: 10,
   },
+
+  safeArea: {
+    flex: 1,
+    backgroundColor: "#0B0B0B",
+  },
+
   classContainer: {
     flex: 5,
     width: 370,
     height: 150,
-    backgroundColor: "#551a8b",
-    borderRadius: 8,
+    //backgroundColor: "#6ede8a",
+    borderRadius: 10,
     padding: 10,
     marginHorizontal: 2,
-    marginVertical: 5,
+    marginVertical: 2,
   },
   courseCode: {
-    color: "#fff",
-    fontSize: 18,
+    color: "#000000",
+    fontSize: 24,
     fontWeight: "bold",
   },
   courseName: {
-    color: "#fff",
-    fontSize: 14,
+    color: "#000000",
+    fontSize: 18,
     marginTop: 5,
+    //fontWeight: "semibold",
   },
 
   attendance: {
-    color: "#fff",
-    fontSize: 12,
+    color: "#000000",
+    fontSize: 16,
     marginTop: 5,
     fontWeight: "500",
   },
@@ -43,4 +52,5 @@ export const styles = StyleSheet.create({
     marginHorizontal: 2,
     marginVertical: 5,
   },
+  
 });

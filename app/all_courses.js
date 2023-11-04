@@ -8,6 +8,7 @@ import AllCoursesCard from "../components/AllCoursesCard";
 import axios from "axios";
 import { ngrokURL } from "../constants/config";
 
+
 const Courses = () => {
   const [secUsername, setUsername] = useState("");
   const [secPassword, setPassword] = useState("");
@@ -59,17 +60,22 @@ const Courses = () => {
   }, [secPassword, secUsername, currentSemester]);
 
   return (
-    <SafeAreaView>
-      <Text style={styles.hello}>All courses page!</Text>
+    <SafeAreaView >
+      <View style={styles.container}>
+      <Text style={styles.usernameContainer}>Courses</Text>
+
       <ScrollView>
         {data ? (
-          data.map((course, index) => (
+          data.map((course, index) => (          
+             
             <AllCoursesCard key={index} course={course} />
+           
           ))
         ) : (
           <Text>No courses </Text>
         )}
       </ScrollView>
+      </View>
     </SafeAreaView>
   );
 };

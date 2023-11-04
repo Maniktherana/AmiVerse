@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { View, Text, TouchableOpacity } from "react-native";
 import { styles } from "../styles/AllCourses";
 import ProgressBar from "react-native-progress/Bar";
+import { LinearGradient } from 'expo-linear-gradient';
 
 const AllCoursesCard = (props) => {
   const [attendance, setAttendance] = useState(0);
@@ -23,8 +24,16 @@ const AllCoursesCard = (props) => {
 
   return (
     <TouchableOpacity>
-      <View style={styles.container}>
+       <View style={styles.container}>
+        <LinearGradient
+        colors={["rgb(2,170,189) ","rgb(0,205,172)"]}
+        start={{ x: 0, y: 0.5}}
+        end={{ x: 1, y: 0.5 }}
+        locations={[0,1]}
+        style={styles.classContainer} 
+        >
         <View style={styles.classContainer}>
+      
           <Text style={styles.courseCode}>{props.course.ref.code}</Text>
           <Text style={styles.courseName}>{props.course.ref.name}</Text>
           <Text style={styles.attendance}>
@@ -39,7 +48,9 @@ const AllCoursesCard = (props) => {
           {/* <Text style={styles.faculty}>Taught by : {data.data.faculty}</Text> */}
           {/* <Text style={styles.room}>Classroom : {data.data.room}</Text> */}
         </View>
+        </LinearGradient>
       </View>
+      
     </TouchableOpacity>
   );
 };

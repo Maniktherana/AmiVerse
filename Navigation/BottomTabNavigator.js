@@ -1,5 +1,5 @@
+/*import React from "react";
 import { View } from "react-native";
-
 import { ScrollView } from "react-native-gesture-handler";
 import Username from "../components/Username";
 import Todaytimetable from "../components/timetable";
@@ -7,7 +7,6 @@ import { useNavigation } from "@react-navigation/native";
 import { createMaterialBottomTabNavigator } from "@react-navigation/material-bottom-tabs";
 import MaterialCommunityIcons from "react-native-vector-icons/MaterialCommunityIcons";
 import Courses from "./all_courses";
-
 
 const Tab = createMaterialBottomTabNavigator();
 
@@ -29,24 +28,15 @@ const TabNavigator = () => {
   return (
     <Tab.Navigator
       initialRouteName="Home"
-      activeColor="#3f37c9"
-      barStyle={{ 
-        backgroundColor: "#f0edf6",
-        height: 60,
-        //position: 'absolute',
-        bottom: 16,
-        right: 16,
-        left: 16,
-        borderRadius: 10
-      
-      }}
+      activeColor="#f0edf6"
+      barStyle={{ backgroundColor: "transparent" }}
       screenOptions={{ headerShown: false }}
     >
       <Tab.Screen
         name="Home"
         component={HomeScreen}
         options={{
-          tabBarLabel: "TimeTable",
+          tabBarLabel: "Timetable",
           tabBarIcon: ({ color }) => (
             <MaterialCommunityIcons name="home" color={color} size={26} />
           ),
@@ -70,4 +60,4 @@ const TabNavigator = () => {
   );
 };
 
-export default TabNavigator;
+export default TabNavigator;/*/

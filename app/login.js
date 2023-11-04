@@ -1,10 +1,12 @@
 import React, { useEffect, useState } from "react";
-import { View, TextInput, Button } from "react-native";
+import { View, Text, TextInput, Button, Image } from "react-native";
+import { TouchableOpacity, } from "react-native";
 import * as SecureStore from "expo-secure-store";
 import { useRouter, Redirect, useNavigation } from "expo-router";
 import { styles } from "../styles/Login";
 import AsyncStorage from "@react-native-async-storage/async-storage";
 import { ngrokURL } from "../constants/config";
+
 
 const LoginScreen = () => {
   const navigation = useNavigation();
@@ -19,7 +21,7 @@ const LoginScreen = () => {
       await SecureStore.setItemAsync("username", username);
       await SecureStore.setItemAsync("password", password);
       // await SecureStore.setItemAsync("user_data", JSON.stringify(userData));
-    } catch (error) {}
+    } catch (error) { }
   };
 
   const storeData = async (value) => {
@@ -69,20 +71,39 @@ const LoginScreen = () => {
   return loggedin ? (
     <Redirect href="/homepage" />
   ) : (
-    <View style={styles.container}>
-      <TextInput
-        style={styles.input}
-        placeholder="Username"
-        onChangeText={(text) => setUsername(text)}
+    <View style= {styles.container}>
+
+      <Image
+        source={require("../assets/Picture1.png")} // Specify the relative path to your image
+        style={styles.logo} // Apply a style to the image if needed
       />
-      <TextInput
-        style={styles.input}
-        placeholder="Password"
-        onChangeText={(text) => setPassword(text)}
-        secureTextEntry={true}
-      />
-      <Button title="Login" onPress={VerifyCredentials} />
-    </View>
+
+      <Text style={styles.title}>Login</Text>
+    
+
+        <TextInput
+          style={[styles.input, styles.usernameInput]}
+          placeholder="User Name"
+          placeholderTextColor="white"
+          onChangeText={(text) => setUsername(text)}
+        />
+        <TextInput
+          style={[styles.input, styles.usernameInput]}
+          placeholder="Password"
+          placeholderTextColor="white"
+          onChangeText={(text) => setPassword(text)}
+          secureTextEntry={true}
+        />
+
+        <TouchableOpacity
+          style={styles.loginButton}
+          onPress={VerifyCredentials}
+        >
+          <Text style={styles.buttonText}>Login</Text>
+        </TouchableOpacity>
+
+      </View>
+
   );
 };
 
